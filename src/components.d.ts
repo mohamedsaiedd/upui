@@ -9,18 +9,13 @@ export namespace Components {
     interface MainBtn {
     }
     interface MyComponent {
-        /**
-          * The first name
-         */
         "first": string;
-        /**
-          * The last name
-         */
         "last": string;
-        /**
-          * The middle name
-         */
         "middle": string;
+    }
+    interface PrimaryBtn {
+        "btnText": string;
+        "text": string;
     }
     interface RcsActions {
         "actions": string;
@@ -45,6 +40,12 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLPrimaryBtnElement extends Components.PrimaryBtn, HTMLStencilElement {
+    }
+    var HTMLPrimaryBtnElement: {
+        prototype: HTMLPrimaryBtnElement;
+        new (): HTMLPrimaryBtnElement;
+    };
     interface HTMLRcsActionsElementEventMap {
         "actionClick": string;
     }
@@ -65,6 +66,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "main-btn": HTMLMainBtnElement;
         "my-component": HTMLMyComponentElement;
+        "primary-btn": HTMLPrimaryBtnElement;
         "rcs-actions": HTMLRcsActionsElement;
     }
 }
@@ -72,18 +74,13 @@ declare namespace LocalJSX {
     interface MainBtn {
     }
     interface MyComponent {
-        /**
-          * The first name
-         */
         "first"?: string;
-        /**
-          * The last name
-         */
         "last"?: string;
-        /**
-          * The middle name
-         */
         "middle"?: string;
+    }
+    interface PrimaryBtn {
+        "btnText"?: string;
+        "text"?: string;
     }
     interface RcsActions {
         "actions"?: string;
@@ -94,6 +91,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "main-btn": MainBtn;
         "my-component": MyComponent;
+        "primary-btn": PrimaryBtn;
         "rcs-actions": RcsActions;
     }
 }
@@ -103,6 +101,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "primary-btn": LocalJSX.PrimaryBtn & JSXBase.HTMLAttributes<HTMLPrimaryBtnElement>;
             "rcs-actions": LocalJSX.RcsActions & JSXBase.HTMLAttributes<HTMLRcsActionsElement>;
         }
     }
