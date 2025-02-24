@@ -15,6 +15,9 @@ export namespace Components {
     }
     interface PrimaryBtn {
         "btnText": string;
+        "btndisabled": boolean;
+        "imagesrc": string;
+        "plusicon": boolean;
         "text": string;
     }
     interface RcsActions {
@@ -80,6 +83,9 @@ declare namespace LocalJSX {
     }
     interface PrimaryBtn {
         "btnText"?: string;
+        "btndisabled"?: boolean;
+        "imagesrc"?: string;
+        "plusicon"?: boolean;
         "text"?: string;
     }
     interface RcsActions {
