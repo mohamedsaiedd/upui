@@ -20,6 +20,11 @@ export namespace Components {
         "plusicon": boolean;
         "text": string;
     }
+    interface RadioInput {
+        "labelfor": string;
+        "labeltitle": string;
+        "radiodisabled": boolean;
+    }
     interface RcsActions {
         "actions": string;
         "description": string;
@@ -49,6 +54,12 @@ declare global {
         prototype: HTMLPrimaryBtnElement;
         new (): HTMLPrimaryBtnElement;
     };
+    interface HTMLRadioInputElement extends Components.RadioInput, HTMLStencilElement {
+    }
+    var HTMLRadioInputElement: {
+        prototype: HTMLRadioInputElement;
+        new (): HTMLRadioInputElement;
+    };
     interface HTMLRcsActionsElementEventMap {
         "actionClick": string;
     }
@@ -70,6 +81,7 @@ declare global {
         "main-btn": HTMLMainBtnElement;
         "my-component": HTMLMyComponentElement;
         "primary-btn": HTMLPrimaryBtnElement;
+        "radio-input": HTMLRadioInputElement;
         "rcs-actions": HTMLRcsActionsElement;
     }
 }
@@ -88,6 +100,11 @@ declare namespace LocalJSX {
         "plusicon"?: boolean;
         "text"?: string;
     }
+    interface RadioInput {
+        "labelfor"?: string;
+        "labeltitle"?: string;
+        "radiodisabled"?: boolean;
+    }
     interface RcsActions {
         "actions"?: string;
         "description"?: string;
@@ -98,6 +115,7 @@ declare namespace LocalJSX {
         "main-btn": MainBtn;
         "my-component": MyComponent;
         "primary-btn": PrimaryBtn;
+        "radio-input": RadioInput;
         "rcs-actions": RcsActions;
     }
 }
@@ -108,6 +126,7 @@ declare module "@stencil/core" {
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "primary-btn": LocalJSX.PrimaryBtn & JSXBase.HTMLAttributes<HTMLPrimaryBtnElement>;
+            "radio-input": LocalJSX.RadioInput & JSXBase.HTMLAttributes<HTMLRadioInputElement>;
             "rcs-actions": LocalJSX.RcsActions & JSXBase.HTMLAttributes<HTMLRcsActionsElement>;
         }
     }
