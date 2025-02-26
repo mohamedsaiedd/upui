@@ -19,20 +19,26 @@
   margin-bottom: 10px;
 }
 
-.upui-gray-outlined-btn {
+.upui-primary-no-border-btn {
   background-color: #ffffff;
-  border: 1px solid #6B7786;
-  color: #6B7786;
-  &:hover , :focus {
-    background-color: #F1F3F3;
-    border: 1px solid #5E6978;
-    color :#5E6978;
+  border: none;
+  color: #2574DB;
+  &:hover {
+    background-color: #F0F6FE;
+    border: none;
+    color :#1666D0;
   }
 
   &:active {
-    background-color: #F1F3F3;
-    border: 1px solid #525C69;
-    color: #525C69;
+    background-color: #E2EEFD;
+    border: none;
+    color: #0C5CC5;
+  }
+
+  &:focus {
+    background-color: #F0F6FE;
+    border: 2px solid #1666D0;
+    color :#1666D0;
   }
 
   .upui-btn-icon {
@@ -42,9 +48,9 @@
     width:22px;
   }
 }
-.upui-gray-outlined-btn-disabled{
+.upui-primary-no-border-btn-disabled{
   background-color: #FFFFFF !important;
-  border: 1px solid #B2BAC5 !important;
+  border: none !important;
   color : #B2BAC5 !important;
   &:focus {
     border: 2px solid  #3D454F !important;

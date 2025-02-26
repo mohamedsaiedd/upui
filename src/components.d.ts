@@ -25,12 +25,24 @@ export namespace Components {
         "plusicon": boolean;
         "text": string;
     }
+    interface PrimaryNoBorderBtn {
+        "btndisabled": boolean;
+        "imagesrc": string;
+        "plusicon": boolean;
+        "text": string;
+    }
     interface RcsActions {
         "actions": string;
         "description": string;
         "title": string;
     }
     interface SecondaryBtn {
+        "btndisabled": boolean;
+        "imagesrc": string;
+        "plusicon": boolean;
+        "text": string;
+    }
+    interface SecondaryNoBorderBtn {
         "btndisabled": boolean;
         "imagesrc": string;
         "plusicon": boolean;
@@ -66,6 +78,12 @@ declare global {
         prototype: HTMLPrimaryBtnElement;
         new (): HTMLPrimaryBtnElement;
     };
+    interface HTMLPrimaryNoBorderBtnElement extends Components.PrimaryNoBorderBtn, HTMLStencilElement {
+    }
+    var HTMLPrimaryNoBorderBtnElement: {
+        prototype: HTMLPrimaryNoBorderBtnElement;
+        new (): HTMLPrimaryNoBorderBtnElement;
+    };
     interface HTMLRcsActionsElementEventMap {
         "actionClick": string;
     }
@@ -89,13 +107,21 @@ declare global {
         prototype: HTMLSecondaryBtnElement;
         new (): HTMLSecondaryBtnElement;
     };
+    interface HTMLSecondaryNoBorderBtnElement extends Components.SecondaryNoBorderBtn, HTMLStencilElement {
+    }
+    var HTMLSecondaryNoBorderBtnElement: {
+        prototype: HTMLSecondaryNoBorderBtnElement;
+        new (): HTMLSecondaryNoBorderBtnElement;
+    };
     interface HTMLElementTagNameMap {
         "gray-outlined-btn": HTMLGrayOutlinedBtnElement;
         "main-btn": HTMLMainBtnElement;
         "my-component": HTMLMyComponentElement;
         "primary-btn": HTMLPrimaryBtnElement;
+        "primary-no-border-btn": HTMLPrimaryNoBorderBtnElement;
         "rcs-actions": HTMLRcsActionsElement;
         "secondary-btn": HTMLSecondaryBtnElement;
+        "secondary-no-border-btn": HTMLSecondaryNoBorderBtnElement;
     }
 }
 declare namespace LocalJSX {
@@ -118,6 +144,12 @@ declare namespace LocalJSX {
         "plusicon"?: boolean;
         "text"?: string;
     }
+    interface PrimaryNoBorderBtn {
+        "btndisabled"?: boolean;
+        "imagesrc"?: string;
+        "plusicon"?: boolean;
+        "text"?: string;
+    }
     interface RcsActions {
         "actions"?: string;
         "description"?: string;
@@ -130,13 +162,21 @@ declare namespace LocalJSX {
         "plusicon"?: boolean;
         "text"?: string;
     }
+    interface SecondaryNoBorderBtn {
+        "btndisabled"?: boolean;
+        "imagesrc"?: string;
+        "plusicon"?: boolean;
+        "text"?: string;
+    }
     interface IntrinsicElements {
         "gray-outlined-btn": GrayOutlinedBtn;
         "main-btn": MainBtn;
         "my-component": MyComponent;
         "primary-btn": PrimaryBtn;
+        "primary-no-border-btn": PrimaryNoBorderBtn;
         "rcs-actions": RcsActions;
         "secondary-btn": SecondaryBtn;
+        "secondary-no-border-btn": SecondaryNoBorderBtn;
     }
 }
 export { LocalJSX as JSX };
@@ -147,8 +187,10 @@ declare module "@stencil/core" {
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "primary-btn": LocalJSX.PrimaryBtn & JSXBase.HTMLAttributes<HTMLPrimaryBtnElement>;
+            "primary-no-border-btn": LocalJSX.PrimaryNoBorderBtn & JSXBase.HTMLAttributes<HTMLPrimaryNoBorderBtnElement>;
             "rcs-actions": LocalJSX.RcsActions & JSXBase.HTMLAttributes<HTMLRcsActionsElement>;
             "secondary-btn": LocalJSX.SecondaryBtn & JSXBase.HTMLAttributes<HTMLSecondaryBtnElement>;
+            "secondary-no-border-btn": LocalJSX.SecondaryNoBorderBtn & JSXBase.HTMLAttributes<HTMLSecondaryNoBorderBtnElement>;
         }
     }
 }
