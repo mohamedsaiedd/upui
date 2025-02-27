@@ -83,17 +83,17 @@ declare global {
         prototype: HTMLPrimaryBtnElement;
         new (): HTMLPrimaryBtnElement;
     };
-    interface HTMLRadioInputElement extends Components.RadioInput, HTMLStencilElement {
-    }
-    var HTMLRadioInputElement: {
-        prototype: HTMLRadioInputElement;
-        new (): HTMLRadioInputElement;
-    };
     interface HTMLPrimaryNoBorderBtnElement extends Components.PrimaryNoBorderBtn, HTMLStencilElement {
     }
     var HTMLPrimaryNoBorderBtnElement: {
         prototype: HTMLPrimaryNoBorderBtnElement;
         new (): HTMLPrimaryNoBorderBtnElement;
+    };
+    interface HTMLRadioInputElement extends Components.RadioInput, HTMLStencilElement {
+    }
+    var HTMLRadioInputElement: {
+        prototype: HTMLRadioInputElement;
+        new (): HTMLRadioInputElement;
     };
     interface HTMLRcsActionsElementEventMap {
         "actionClick": string;
@@ -129,8 +129,8 @@ declare global {
         "main-btn": HTMLMainBtnElement;
         "my-component": HTMLMyComponentElement;
         "primary-btn": HTMLPrimaryBtnElement;
-        "radio-input": HTMLRadioInputElement;
         "primary-no-border-btn": HTMLPrimaryNoBorderBtnElement;
+        "radio-input": HTMLRadioInputElement;
         "rcs-actions": HTMLRcsActionsElement;
         "secondary-btn": HTMLSecondaryBtnElement;
         "secondary-no-border-btn": HTMLSecondaryNoBorderBtnElement;
@@ -190,8 +190,8 @@ declare namespace LocalJSX {
         "main-btn": MainBtn;
         "my-component": MyComponent;
         "primary-btn": PrimaryBtn;
-        "radio-input": RadioInput;
         "primary-no-border-btn": PrimaryNoBorderBtn;
+        "radio-input": RadioInput;
         "rcs-actions": RcsActions;
         "secondary-btn": SecondaryBtn;
         "secondary-no-border-btn": SecondaryNoBorderBtn;
@@ -205,8 +205,8 @@ declare module "@stencil/core" {
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "primary-btn": LocalJSX.PrimaryBtn & JSXBase.HTMLAttributes<HTMLPrimaryBtnElement>;
-            "radio-input": LocalJSX.RadioInput & JSXBase.HTMLAttributes<HTMLRadioInputElement>;
             "primary-no-border-btn": LocalJSX.PrimaryNoBorderBtn & JSXBase.HTMLAttributes<HTMLPrimaryNoBorderBtnElement>;
+            "radio-input": LocalJSX.RadioInput & JSXBase.HTMLAttributes<HTMLRadioInputElement>;
             "rcs-actions": LocalJSX.RcsActions & JSXBase.HTMLAttributes<HTMLRcsActionsElement>;
             "secondary-btn": LocalJSX.SecondaryBtn & JSXBase.HTMLAttributes<HTMLSecondaryBtnElement>;
             "secondary-no-border-btn": LocalJSX.SecondaryNoBorderBtn & JSXBase.HTMLAttributes<HTMLSecondaryNoBorderBtnElement>;
