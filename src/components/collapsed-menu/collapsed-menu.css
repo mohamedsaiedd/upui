@@ -1,0 +1,55 @@
+:host {
+  display: block;
+}
+
+.upui-collapse-menu-container {
+  border-radius: 4px;
+  border: solid 1px #bfc6ce;
+  margin: 15px;
+  .upui-collapse-header {
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+    background-color: #f0f6fe;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    p {
+      margin: 0;
+    }
+    &:focus{
+      border: 2px solid #0C5CC5;
+    }
+  }
+  .upui-collapse-body {
+    overflow: hidden;
+    transition: height 0.25s ease;
+    height: 0;
+  }
+  .upui-collapse-disabled{
+    cursor: not-allowed ;
+    background-color: #F1F3F3;
+    color: #5E6978;
+    &:focus{
+      border: 1px solid #6B7786;
+    }
+  }
+}
+
+.arrow-down {
+  transform: rotate(0deg);
+  transition: transform 0.35s ease;
+}
+
+.arrow-rotate {
+  transform: rotate(180deg);
+  transition: transform 0.35s ease;
+}
+
+.animate-menu {
+  padding: 15px;
+  transition: height 0.5s ease-in-out !important;
+  height: auto !important;
+}
