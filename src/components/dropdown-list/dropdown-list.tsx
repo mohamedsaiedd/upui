@@ -15,7 +15,7 @@ export class DropdownList {
 
   componentDidLoad() {
     document.addEventListener('click', this.handleOutsideClick.bind(this));
-    const slotElement = this.el.shadowRoot.querySelector('slot[name="option"]');
+    const slotElement = this.el.shadowRoot.querySelector('slot');
     slotElement.addEventListener('click', this.handleSlotClick.bind(this));
   }
 
@@ -39,10 +39,10 @@ export class DropdownList {
       this.arrowUp = false;
     }
   }
-
+ 
   disconnectedCallback() {
     document.removeEventListener('click', this.handleOutsideClick.bind(this));
-    const slotElement = this.el.shadowRoot.querySelector('slot[name="option"]');
+    const slotElement = this.el.shadowRoot.querySelector('slot');
     slotElement.removeEventListener('click', this.handleSlotClick.bind(this));
   }
   
@@ -70,7 +70,7 @@ export class DropdownList {
             )}
           </div>
           <ul class={`upui-ul-items-container ${this.isListOpen ? '' : 'display-none'}`}>
-            <slot name="option"></slot>
+            <slot></slot>
           </ul>
         </div>
       </Host>
