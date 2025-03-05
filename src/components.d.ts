@@ -14,6 +14,12 @@ export namespace Components {
     }
     interface MainBtn {
     }
+    interface MyChip {
+        "removable"?: boolean;
+        "selected"?: boolean;
+        "size"?: 'small' | 'medium' | 'large';
+        "text": string;
+    }
     interface MyComponent {
         "first": string;
         "last": string;
@@ -39,7 +45,6 @@ export namespace Components {
     interface RcsActions {
         "actions": string;
         "description": string;
-        "title": string;
     }
     interface SecondaryBtn {
         "btndisabled": boolean;
@@ -53,10 +58,24 @@ export namespace Components {
         "plusicon": boolean;
         "text": string;
     }
+    interface UpuiChip {
+        "removable"?: boolean;
+        "selected"?: boolean;
+        "size"?: 'small' | 'medium' | 'large';
+        "text": string;
+    }
+}
+export interface MyChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyChipElement;
 }
 export interface RcsActionsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLRcsActionsElement;
+}
+export interface UpuiChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUpuiChipElement;
 }
 declare global {
     interface HTMLGrayOutlinedBtnElement extends Components.GrayOutlinedBtn, HTMLStencilElement {
@@ -70,6 +89,24 @@ declare global {
     var HTMLMainBtnElement: {
         prototype: HTMLMainBtnElement;
         new (): HTMLMainBtnElement;
+    };
+    interface HTMLMyChipElementEventMap {
+        "chipClick": void;
+        "chipRemove": void;
+    }
+    interface HTMLMyChipElement extends Components.MyChip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMyChipElementEventMap>(type: K, listener: (this: HTMLMyChipElement, ev: MyChipCustomEvent<HTMLMyChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMyChipElementEventMap>(type: K, listener: (this: HTMLMyChipElement, ev: MyChipCustomEvent<HTMLMyChipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMyChipElement: {
+        prototype: HTMLMyChipElement;
+        new (): HTMLMyChipElement;
     };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
@@ -124,9 +161,28 @@ declare global {
         prototype: HTMLSecondaryNoBorderBtnElement;
         new (): HTMLSecondaryNoBorderBtnElement;
     };
+    interface HTMLUpuiChipElementEventMap {
+        "chipClick": void;
+        "chipRemove": void;
+    }
+    interface HTMLUpuiChipElement extends Components.UpuiChip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUpuiChipElementEventMap>(type: K, listener: (this: HTMLUpuiChipElement, ev: UpuiChipCustomEvent<HTMLUpuiChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUpuiChipElementEventMap>(type: K, listener: (this: HTMLUpuiChipElement, ev: UpuiChipCustomEvent<HTMLUpuiChipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUpuiChipElement: {
+        prototype: HTMLUpuiChipElement;
+        new (): HTMLUpuiChipElement;
+    };
     interface HTMLElementTagNameMap {
         "gray-outlined-btn": HTMLGrayOutlinedBtnElement;
         "main-btn": HTMLMainBtnElement;
+        "my-chip": HTMLMyChipElement;
         "my-component": HTMLMyComponentElement;
         "primary-btn": HTMLPrimaryBtnElement;
         "primary-no-border-btn": HTMLPrimaryNoBorderBtnElement;
@@ -134,6 +190,7 @@ declare global {
         "rcs-actions": HTMLRcsActionsElement;
         "secondary-btn": HTMLSecondaryBtnElement;
         "secondary-no-border-btn": HTMLSecondaryNoBorderBtnElement;
+        "upui-chip": HTMLUpuiChipElement;
     }
 }
 declare namespace LocalJSX {
@@ -144,6 +201,14 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface MainBtn {
+    }
+    interface MyChip {
+        "onChipClick"?: (event: MyChipCustomEvent<void>) => void;
+        "onChipRemove"?: (event: MyChipCustomEvent<void>) => void;
+        "removable"?: boolean;
+        "selected"?: boolean;
+        "size"?: 'small' | 'medium' | 'large';
+        "text": string;
     }
     interface MyComponent {
         "first"?: string;
@@ -171,7 +236,6 @@ declare namespace LocalJSX {
         "actions"?: string;
         "description"?: string;
         "onActionClick"?: (event: RcsActionsCustomEvent<string>) => void;
-        "title"?: string;
     }
     interface SecondaryBtn {
         "btndisabled"?: boolean;
@@ -185,9 +249,18 @@ declare namespace LocalJSX {
         "plusicon"?: boolean;
         "text"?: string;
     }
+    interface UpuiChip {
+        "onChipClick"?: (event: UpuiChipCustomEvent<void>) => void;
+        "onChipRemove"?: (event: UpuiChipCustomEvent<void>) => void;
+        "removable"?: boolean;
+        "selected"?: boolean;
+        "size"?: 'small' | 'medium' | 'large';
+        "text": string;
+    }
     interface IntrinsicElements {
         "gray-outlined-btn": GrayOutlinedBtn;
         "main-btn": MainBtn;
+        "my-chip": MyChip;
         "my-component": MyComponent;
         "primary-btn": PrimaryBtn;
         "primary-no-border-btn": PrimaryNoBorderBtn;
@@ -195,6 +268,7 @@ declare namespace LocalJSX {
         "rcs-actions": RcsActions;
         "secondary-btn": SecondaryBtn;
         "secondary-no-border-btn": SecondaryNoBorderBtn;
+        "upui-chip": UpuiChip;
     }
 }
 export { LocalJSX as JSX };
@@ -203,6 +277,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "gray-outlined-btn": LocalJSX.GrayOutlinedBtn & JSXBase.HTMLAttributes<HTMLGrayOutlinedBtnElement>;
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
+            "my-chip": LocalJSX.MyChip & JSXBase.HTMLAttributes<HTMLMyChipElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "primary-btn": LocalJSX.PrimaryBtn & JSXBase.HTMLAttributes<HTMLPrimaryBtnElement>;
             "primary-no-border-btn": LocalJSX.PrimaryNoBorderBtn & JSXBase.HTMLAttributes<HTMLPrimaryNoBorderBtnElement>;
@@ -210,6 +285,7 @@ declare module "@stencil/core" {
             "rcs-actions": LocalJSX.RcsActions & JSXBase.HTMLAttributes<HTMLRcsActionsElement>;
             "secondary-btn": LocalJSX.SecondaryBtn & JSXBase.HTMLAttributes<HTMLSecondaryBtnElement>;
             "secondary-no-border-btn": LocalJSX.SecondaryNoBorderBtn & JSXBase.HTMLAttributes<HTMLSecondaryNoBorderBtnElement>;
+            "upui-chip": LocalJSX.UpuiChip & JSXBase.HTMLAttributes<HTMLUpuiChipElement>;
         }
     }
 }
