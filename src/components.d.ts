@@ -6,6 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CollapsedMenu {
+        "collapsedisabled": boolean;
+        "header": string;
+    }
     interface DropdownList {
         "dropdowndisabled": boolean;
         "label": string;
@@ -63,6 +67,12 @@ export interface RcsActionsCustomEvent<T> extends CustomEvent<T> {
     target: HTMLRcsActionsElement;
 }
 declare global {
+    interface HTMLCollapsedMenuElement extends Components.CollapsedMenu, HTMLStencilElement {
+    }
+    var HTMLCollapsedMenuElement: {
+        prototype: HTMLCollapsedMenuElement;
+        new (): HTMLCollapsedMenuElement;
+    };
     interface HTMLDropdownListElement extends Components.DropdownList, HTMLStencilElement {
     }
     var HTMLDropdownListElement: {
@@ -135,6 +145,7 @@ declare global {
         new (): HTMLSecondaryNoBorderBtnElement;
     };
     interface HTMLElementTagNameMap {
+        "collapsed-menu": HTMLCollapsedMenuElement;
         "dropdown-list": HTMLDropdownListElement;
         "gray-outlined-btn": HTMLGrayOutlinedBtnElement;
         "main-btn": HTMLMainBtnElement;
@@ -148,6 +159,10 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface CollapsedMenu {
+        "collapsedisabled"?: boolean;
+        "header"?: string;
+    }
     interface DropdownList {
         "dropdowndisabled"?: boolean;
         "label"?: string;
@@ -201,6 +216,7 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface IntrinsicElements {
+        "collapsed-menu": CollapsedMenu;
         "dropdown-list": DropdownList;
         "gray-outlined-btn": GrayOutlinedBtn;
         "main-btn": MainBtn;
@@ -217,6 +233,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "collapsed-menu": LocalJSX.CollapsedMenu & JSXBase.HTMLAttributes<HTMLCollapsedMenuElement>;
             "dropdown-list": LocalJSX.DropdownList & JSXBase.HTMLAttributes<HTMLDropdownListElement>;
             "gray-outlined-btn": LocalJSX.GrayOutlinedBtn & JSXBase.HTMLAttributes<HTMLGrayOutlinedBtnElement>;
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
