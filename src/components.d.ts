@@ -20,12 +20,6 @@ export namespace Components {
     }
     interface MainBtn {
     }
-    interface MyChip {
-        "removable"?: boolean;
-        "selected"?: boolean;
-        "size"?: 'small' | 'medium' | 'large';
-        "text": string;
-    }
     interface MyComponent {
         "first": string;
         "last": string;
@@ -71,10 +65,15 @@ export namespace Components {
         "size"?: 'small' | 'medium' | 'large';
         "text": string;
     }
-}
-export interface MyChipCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMyChipElement;
+    interface UpuiInput {
+        "inputId": string;
+        "label": string;
+        "name": string;
+        "placeholder": string;
+        "readonly": boolean;
+        "type": string;
+        "value": string;
+    }
 }
 export interface RcsActionsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -83,6 +82,10 @@ export interface RcsActionsCustomEvent<T> extends CustomEvent<T> {
 export interface UpuiChipCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUpuiChipElement;
+}
+export interface UpuiInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUpuiInputElement;
 }
 declare global {
     interface HTMLCheckboxInputElement extends Components.CheckboxInput, HTMLStencilElement {
@@ -102,24 +105,6 @@ declare global {
     var HTMLMainBtnElement: {
         prototype: HTMLMainBtnElement;
         new (): HTMLMainBtnElement;
-    };
-    interface HTMLMyChipElementEventMap {
-        "chipClick": void;
-        "chipRemove": void;
-    }
-    interface HTMLMyChipElement extends Components.MyChip, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMyChipElementEventMap>(type: K, listener: (this: HTMLMyChipElement, ev: MyChipCustomEvent<HTMLMyChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMyChipElementEventMap>(type: K, listener: (this: HTMLMyChipElement, ev: MyChipCustomEvent<HTMLMyChipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMyChipElement: {
-        prototype: HTMLMyChipElement;
-        new (): HTMLMyChipElement;
     };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
@@ -192,11 +177,27 @@ declare global {
         prototype: HTMLUpuiChipElement;
         new (): HTMLUpuiChipElement;
     };
+    interface HTMLUpuiInputElementEventMap {
+        "valueChanged": string;
+    }
+    interface HTMLUpuiInputElement extends Components.UpuiInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUpuiInputElementEventMap>(type: K, listener: (this: HTMLUpuiInputElement, ev: UpuiInputCustomEvent<HTMLUpuiInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUpuiInputElementEventMap>(type: K, listener: (this: HTMLUpuiInputElement, ev: UpuiInputCustomEvent<HTMLUpuiInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUpuiInputElement: {
+        prototype: HTMLUpuiInputElement;
+        new (): HTMLUpuiInputElement;
+    };
     interface HTMLElementTagNameMap {
         "checkbox-input": HTMLCheckboxInputElement;
         "gray-outlined-btn": HTMLGrayOutlinedBtnElement;
         "main-btn": HTMLMainBtnElement;
-        "my-chip": HTMLMyChipElement;
         "my-component": HTMLMyComponentElement;
         "primary-btn": HTMLPrimaryBtnElement;
         "primary-no-border-btn": HTMLPrimaryNoBorderBtnElement;
@@ -205,6 +206,7 @@ declare global {
         "secondary-btn": HTMLSecondaryBtnElement;
         "secondary-no-border-btn": HTMLSecondaryNoBorderBtnElement;
         "upui-chip": HTMLUpuiChipElement;
+        "upui-input": HTMLUpuiInputElement;
     }
 }
 declare namespace LocalJSX {
@@ -221,14 +223,6 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface MainBtn {
-    }
-    interface MyChip {
-        "onChipClick"?: (event: MyChipCustomEvent<void>) => void;
-        "onChipRemove"?: (event: MyChipCustomEvent<void>) => void;
-        "removable"?: boolean;
-        "selected"?: boolean;
-        "size"?: 'small' | 'medium' | 'large';
-        "text": string;
     }
     interface MyComponent {
         "first"?: string;
@@ -278,11 +272,20 @@ declare namespace LocalJSX {
         "size"?: 'small' | 'medium' | 'large';
         "text": string;
     }
+    interface UpuiInput {
+        "inputId"?: string;
+        "label"?: string;
+        "name"?: string;
+        "onValueChanged"?: (event: UpuiInputCustomEvent<string>) => void;
+        "placeholder"?: string;
+        "readonly"?: boolean;
+        "type"?: string;
+        "value"?: string;
+    }
     interface IntrinsicElements {
         "checkbox-input": CheckboxInput;
         "gray-outlined-btn": GrayOutlinedBtn;
         "main-btn": MainBtn;
-        "my-chip": MyChip;
         "my-component": MyComponent;
         "primary-btn": PrimaryBtn;
         "primary-no-border-btn": PrimaryNoBorderBtn;
@@ -291,6 +294,7 @@ declare namespace LocalJSX {
         "secondary-btn": SecondaryBtn;
         "secondary-no-border-btn": SecondaryNoBorderBtn;
         "upui-chip": UpuiChip;
+        "upui-input": UpuiInput;
     }
 }
 export { LocalJSX as JSX };
@@ -300,7 +304,6 @@ declare module "@stencil/core" {
             "checkbox-input": LocalJSX.CheckboxInput & JSXBase.HTMLAttributes<HTMLCheckboxInputElement>;
             "gray-outlined-btn": LocalJSX.GrayOutlinedBtn & JSXBase.HTMLAttributes<HTMLGrayOutlinedBtnElement>;
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
-            "my-chip": LocalJSX.MyChip & JSXBase.HTMLAttributes<HTMLMyChipElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "primary-btn": LocalJSX.PrimaryBtn & JSXBase.HTMLAttributes<HTMLPrimaryBtnElement>;
             "primary-no-border-btn": LocalJSX.PrimaryNoBorderBtn & JSXBase.HTMLAttributes<HTMLPrimaryNoBorderBtnElement>;
@@ -309,6 +312,7 @@ declare module "@stencil/core" {
             "secondary-btn": LocalJSX.SecondaryBtn & JSXBase.HTMLAttributes<HTMLSecondaryBtnElement>;
             "secondary-no-border-btn": LocalJSX.SecondaryNoBorderBtn & JSXBase.HTMLAttributes<HTMLSecondaryNoBorderBtnElement>;
             "upui-chip": LocalJSX.UpuiChip & JSXBase.HTMLAttributes<HTMLUpuiChipElement>;
+            "upui-input": LocalJSX.UpuiInput & JSXBase.HTMLAttributes<HTMLUpuiInputElement>;
         }
     }
 }

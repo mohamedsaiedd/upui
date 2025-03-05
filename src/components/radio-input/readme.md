@@ -11,6 +11,7 @@
 | --------------- | --------------- | ----------- | --------- | ----------- |
 | `labelfor`      | `labelfor`      |             | `string`  | `undefined` |
 | `labeltitle`    | `labeltitle`    |             | `string`  | `undefined` |
+| `radioValue`    | `radio-value`   |             | `string`  | `undefined` |
 | `radiodisabled` | `radiodisabled` |             | `boolean` | `undefined` |
 
 
