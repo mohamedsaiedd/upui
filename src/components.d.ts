@@ -6,6 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface DropdownList {
+        "dropdowndisabled": boolean;
+        "label": string;
+    }
     interface GrayOutlinedBtn {
         "btndisabled": boolean;
         "imagesrc": string;
@@ -59,6 +63,12 @@ export interface RcsActionsCustomEvent<T> extends CustomEvent<T> {
     target: HTMLRcsActionsElement;
 }
 declare global {
+    interface HTMLDropdownListElement extends Components.DropdownList, HTMLStencilElement {
+    }
+    var HTMLDropdownListElement: {
+        prototype: HTMLDropdownListElement;
+        new (): HTMLDropdownListElement;
+    };
     interface HTMLGrayOutlinedBtnElement extends Components.GrayOutlinedBtn, HTMLStencilElement {
     }
     var HTMLGrayOutlinedBtnElement: {
@@ -125,6 +135,7 @@ declare global {
         new (): HTMLSecondaryNoBorderBtnElement;
     };
     interface HTMLElementTagNameMap {
+        "dropdown-list": HTMLDropdownListElement;
         "gray-outlined-btn": HTMLGrayOutlinedBtnElement;
         "main-btn": HTMLMainBtnElement;
         "my-component": HTMLMyComponentElement;
@@ -137,6 +148,10 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface DropdownList {
+        "dropdowndisabled"?: boolean;
+        "label"?: string;
+    }
     interface GrayOutlinedBtn {
         "btndisabled"?: boolean;
         "imagesrc"?: string;
@@ -186,6 +201,7 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface IntrinsicElements {
+        "dropdown-list": DropdownList;
         "gray-outlined-btn": GrayOutlinedBtn;
         "main-btn": MainBtn;
         "my-component": MyComponent;
@@ -201,6 +217,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "dropdown-list": LocalJSX.DropdownList & JSXBase.HTMLAttributes<HTMLDropdownListElement>;
             "gray-outlined-btn": LocalJSX.GrayOutlinedBtn & JSXBase.HTMLAttributes<HTMLGrayOutlinedBtnElement>;
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
