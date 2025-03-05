@@ -6,6 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface DropdownList {
+        "dropdowndisabled": boolean;
+        "label": string;
+    }
     interface CheckboxInput {
         "checkboxdisabled": boolean;
         "checkboxvalue": string;
@@ -88,6 +92,12 @@ export interface UpuiInputCustomEvent<T> extends CustomEvent<T> {
     target: HTMLUpuiInputElement;
 }
 declare global {
+    interface HTMLDropdownListElement extends Components.DropdownList, HTMLStencilElement {
+    }
+    var HTMLDropdownListElement: {
+        prototype: HTMLDropdownListElement;
+        new (): HTMLDropdownListElement;
+    }
     interface HTMLCheckboxInputElement extends Components.CheckboxInput, HTMLStencilElement {
     }
     var HTMLCheckboxInputElement: {
@@ -195,6 +205,7 @@ declare global {
         new (): HTMLUpuiInputElement;
     };
     interface HTMLElementTagNameMap {
+        "dropdown-list": HTMLDropdownListElement;
         "checkbox-input": HTMLCheckboxInputElement;
         "gray-outlined-btn": HTMLGrayOutlinedBtnElement;
         "main-btn": HTMLMainBtnElement;
@@ -210,6 +221,10 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface DropdownList {
+        "dropdowndisabled"?: boolean;
+        "label"?: string;
+    }
     interface CheckboxInput {
         "checkboxdisabled"?: boolean;
         "checkboxvalue"?: string;
@@ -283,6 +298,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface IntrinsicElements {
+        "dropdown-list": DropdownList;
         "checkbox-input": CheckboxInput;
         "gray-outlined-btn": GrayOutlinedBtn;
         "main-btn": MainBtn;
@@ -301,6 +317,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "dropdown-list": LocalJSX.DropdownList & JSXBase.HTMLAttributes<HTMLDropdownListElement>;
             "checkbox-input": LocalJSX.CheckboxInput & JSXBase.HTMLAttributes<HTMLCheckboxInputElement>;
             "gray-outlined-btn": LocalJSX.GrayOutlinedBtn & JSXBase.HTMLAttributes<HTMLGrayOutlinedBtnElement>;
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
