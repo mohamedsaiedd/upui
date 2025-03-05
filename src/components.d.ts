@@ -6,6 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CheckboxInput {
+        "checkboxdisabled": boolean;
+        "checkboxvalue": string;
+        "labelfor": string;
+        "labeltitle": string;
+    }
     interface GrayOutlinedBtn {
         "btndisabled": boolean;
         "imagesrc": string;
@@ -40,6 +46,7 @@ export namespace Components {
     interface RadioInput {
         "labelfor": string;
         "labeltitle": string;
+        "radioValue": string;
         "radiodisabled": boolean;
     }
     interface RcsActions {
@@ -78,6 +85,12 @@ export interface UpuiChipCustomEvent<T> extends CustomEvent<T> {
     target: HTMLUpuiChipElement;
 }
 declare global {
+    interface HTMLCheckboxInputElement extends Components.CheckboxInput, HTMLStencilElement {
+    }
+    var HTMLCheckboxInputElement: {
+        prototype: HTMLCheckboxInputElement;
+        new (): HTMLCheckboxInputElement;
+    };
     interface HTMLGrayOutlinedBtnElement extends Components.GrayOutlinedBtn, HTMLStencilElement {
     }
     var HTMLGrayOutlinedBtnElement: {
@@ -180,6 +193,7 @@ declare global {
         new (): HTMLUpuiChipElement;
     };
     interface HTMLElementTagNameMap {
+        "checkbox-input": HTMLCheckboxInputElement;
         "gray-outlined-btn": HTMLGrayOutlinedBtnElement;
         "main-btn": HTMLMainBtnElement;
         "my-chip": HTMLMyChipElement;
@@ -194,6 +208,12 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface CheckboxInput {
+        "checkboxdisabled"?: boolean;
+        "checkboxvalue"?: string;
+        "labelfor"?: string;
+        "labeltitle"?: string;
+    }
     interface GrayOutlinedBtn {
         "btndisabled"?: boolean;
         "imagesrc"?: string;
@@ -230,6 +250,7 @@ declare namespace LocalJSX {
     interface RadioInput {
         "labelfor"?: string;
         "labeltitle"?: string;
+        "radioValue"?: string;
         "radiodisabled"?: boolean;
     }
     interface RcsActions {
@@ -258,6 +279,7 @@ declare namespace LocalJSX {
         "text": string;
     }
     interface IntrinsicElements {
+        "checkbox-input": CheckboxInput;
         "gray-outlined-btn": GrayOutlinedBtn;
         "main-btn": MainBtn;
         "my-chip": MyChip;
@@ -275,6 +297,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "checkbox-input": LocalJSX.CheckboxInput & JSXBase.HTMLAttributes<HTMLCheckboxInputElement>;
             "gray-outlined-btn": LocalJSX.GrayOutlinedBtn & JSXBase.HTMLAttributes<HTMLGrayOutlinedBtnElement>;
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
             "my-chip": LocalJSX.MyChip & JSXBase.HTMLAttributes<HTMLMyChipElement>;
