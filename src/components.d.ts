@@ -20,6 +20,10 @@ export namespace Components {
         "labelfor": string;
         "labeltitle": string;
     }
+    interface DropdownList {
+        "dropdowndisabled": boolean;
+        "label": string;
+    }
     interface GrayOutlinedBtn {
         "btndisabled": boolean;
         "imagesrc": string;
@@ -113,6 +117,12 @@ declare global {
     var HTMLCheckboxInputElement: {
         prototype: HTMLCheckboxInputElement;
         new (): HTMLCheckboxInputElement;
+    };
+    interface HTMLDropdownListElement extends Components.DropdownList, HTMLStencilElement {
+    }
+    var HTMLDropdownListElement: {
+        prototype: HTMLDropdownListElement;
+        new (): HTMLDropdownListElement;
     };
     interface HTMLGrayOutlinedBtnElement extends Components.GrayOutlinedBtn, HTMLStencilElement {
     }
@@ -218,6 +228,7 @@ declare global {
         "collapsed-menu": HTMLCollapsedMenuElement;
         "dropdown-list": HTMLDropdownListElement;
         "checkbox-input": HTMLCheckboxInputElement;
+        "dropdown-list": HTMLDropdownListElement;
         "gray-outlined-btn": HTMLGrayOutlinedBtnElement;
         "main-btn": HTMLMainBtnElement;
         "my-component": HTMLMyComponentElement;
@@ -245,6 +256,10 @@ declare namespace LocalJSX {
         "checkboxvalue"?: string;
         "labelfor"?: string;
         "labeltitle"?: string;
+    }
+    interface DropdownList {
+        "dropdowndisabled"?: boolean;
+        "label"?: string;
     }
     interface GrayOutlinedBtn {
         "btndisabled"?: boolean;
@@ -316,6 +331,7 @@ declare namespace LocalJSX {
         "collapsed-menu": CollapsedMenu;
         "dropdown-list": DropdownList;
         "checkbox-input": CheckboxInput;
+        "dropdown-list": DropdownList;
         "gray-outlined-btn": GrayOutlinedBtn;
         "main-btn": MainBtn;
         "my-component": MyComponent;
@@ -336,6 +352,7 @@ declare module "@stencil/core" {
             "collapsed-menu": LocalJSX.CollapsedMenu & JSXBase.HTMLAttributes<HTMLCollapsedMenuElement>;
             "dropdown-list": LocalJSX.DropdownList & JSXBase.HTMLAttributes<HTMLDropdownListElement>;
             "checkbox-input": LocalJSX.CheckboxInput & JSXBase.HTMLAttributes<HTMLCheckboxInputElement>;
+            "dropdown-list": LocalJSX.DropdownList & JSXBase.HTMLAttributes<HTMLDropdownListElement>;
             "gray-outlined-btn": LocalJSX.GrayOutlinedBtn & JSXBase.HTMLAttributes<HTMLGrayOutlinedBtnElement>;
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
