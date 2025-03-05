@@ -6,15 +6,15 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface DropdownList {
-        "dropdowndisabled": boolean;
-        "label": string;
-    }
     interface CheckboxInput {
         "checkboxdisabled": boolean;
         "checkboxvalue": string;
         "labelfor": string;
         "labeltitle": string;
+    }
+    interface DropdownList {
+        "dropdowndisabled": boolean;
+        "label": string;
     }
     interface GrayOutlinedBtn {
         "btndisabled": boolean;
@@ -92,17 +92,17 @@ export interface UpuiInputCustomEvent<T> extends CustomEvent<T> {
     target: HTMLUpuiInputElement;
 }
 declare global {
-    interface HTMLDropdownListElement extends Components.DropdownList, HTMLStencilElement {
-    }
-    var HTMLDropdownListElement: {
-        prototype: HTMLDropdownListElement;
-        new (): HTMLDropdownListElement;
-    }
     interface HTMLCheckboxInputElement extends Components.CheckboxInput, HTMLStencilElement {
     }
     var HTMLCheckboxInputElement: {
         prototype: HTMLCheckboxInputElement;
         new (): HTMLCheckboxInputElement;
+    };
+    interface HTMLDropdownListElement extends Components.DropdownList, HTMLStencilElement {
+    }
+    var HTMLDropdownListElement: {
+        prototype: HTMLDropdownListElement;
+        new (): HTMLDropdownListElement;
     };
     interface HTMLGrayOutlinedBtnElement extends Components.GrayOutlinedBtn, HTMLStencilElement {
     }
@@ -205,8 +205,8 @@ declare global {
         new (): HTMLUpuiInputElement;
     };
     interface HTMLElementTagNameMap {
-        "dropdown-list": HTMLDropdownListElement;
         "checkbox-input": HTMLCheckboxInputElement;
+        "dropdown-list": HTMLDropdownListElement;
         "gray-outlined-btn": HTMLGrayOutlinedBtnElement;
         "main-btn": HTMLMainBtnElement;
         "my-component": HTMLMyComponentElement;
@@ -221,15 +221,15 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface DropdownList {
-        "dropdowndisabled"?: boolean;
-        "label"?: string;
-    }
     interface CheckboxInput {
         "checkboxdisabled"?: boolean;
         "checkboxvalue"?: string;
         "labelfor"?: string;
         "labeltitle"?: string;
+    }
+    interface DropdownList {
+        "dropdowndisabled"?: boolean;
+        "label"?: string;
     }
     interface GrayOutlinedBtn {
         "btndisabled"?: boolean;
@@ -298,8 +298,8 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface IntrinsicElements {
-        "dropdown-list": DropdownList;
         "checkbox-input": CheckboxInput;
+        "dropdown-list": DropdownList;
         "gray-outlined-btn": GrayOutlinedBtn;
         "main-btn": MainBtn;
         "my-component": MyComponent;
@@ -317,8 +317,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "dropdown-list": LocalJSX.DropdownList & JSXBase.HTMLAttributes<HTMLDropdownListElement>;
             "checkbox-input": LocalJSX.CheckboxInput & JSXBase.HTMLAttributes<HTMLCheckboxInputElement>;
+            "dropdown-list": LocalJSX.DropdownList & JSXBase.HTMLAttributes<HTMLDropdownListElement>;
             "gray-outlined-btn": LocalJSX.GrayOutlinedBtn & JSXBase.HTMLAttributes<HTMLGrayOutlinedBtnElement>;
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
