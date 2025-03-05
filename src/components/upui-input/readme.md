@@ -7,14 +7,15 @@
 
 ## Properties
 
-| Property      | Attribute     | Description | Type     | Default     |
-| ------------- | ------------- | ----------- | -------- | ----------- |
-| `inputId`     | `input-id`    |             | `string` | `''`        |
-| `label`       | `label`       |             | `string` | `undefined` |
-| `name`        | `name`        |             | `string` | `''`        |
-| `placeholder` | `placeholder` |             | `string` | `''`        |
-| `type`        | `type`        |             | `string` | `"text"`    |
-| `value`       | `value`       |             | `string` | `''`        |
+| Property      | Attribute     | Description | Type      | Default     |
+| ------------- | ------------- | ----------- | --------- | ----------- |
+| `inputId`     | `input-id`    |             | `string`  | `''`        |
+| `label`       | `label`       |             | `string`  | `undefined` |
+| `name`        | `name`        |             | `string`  | `''`        |
+| `placeholder` | `placeholder` |             | `string`  | `''`        |
+| `readonly`    | `readonly`    |             | `boolean` | `false`     |
+| `type`        | `type`        |             | `string`  | `"text"`    |
+| `value`       | `value`       |             | `string`  | `''`        |
 
 
 ## Events
