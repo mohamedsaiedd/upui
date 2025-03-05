@@ -6,19 +6,15 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface CollapsedMenu {
-        "collapsedisabled": boolean;
-        "header": string;
-    }
-    interface DropdownList {
-        "dropdowndisabled": boolean;
-        "label": string;
-    }
     interface CheckboxInput {
         "checkboxdisabled": boolean;
         "checkboxvalue": string;
         "labelfor": string;
         "labeltitle": string;
+    }
+    interface CollapsedMenu {
+        "collapsedisabled": boolean;
+        "header": string;
     }
     interface DropdownList {
         "dropdowndisabled": boolean;
@@ -100,23 +96,17 @@ export interface UpuiInputCustomEvent<T> extends CustomEvent<T> {
     target: HTMLUpuiInputElement;
 }
 declare global {
-    interface HTMLCollapsedMenuElement extends Components.CollapsedMenu, HTMLStencilElement {
-    }
-    var HTMLCollapsedMenuElement: {
-        prototype: HTMLCollapsedMenuElement;
-        new (): HTMLCollapsedMenuElement;
-    };
-    interface HTMLDropdownListElement extends Components.DropdownList, HTMLStencilElement {
-    }
-    var HTMLDropdownListElement: {
-        prototype: HTMLDropdownListElement;
-        new (): HTMLDropdownListElement;
-    }
     interface HTMLCheckboxInputElement extends Components.CheckboxInput, HTMLStencilElement {
     }
     var HTMLCheckboxInputElement: {
         prototype: HTMLCheckboxInputElement;
         new (): HTMLCheckboxInputElement;
+    };
+    interface HTMLCollapsedMenuElement extends Components.CollapsedMenu, HTMLStencilElement {
+    }
+    var HTMLCollapsedMenuElement: {
+        prototype: HTMLCollapsedMenuElement;
+        new (): HTMLCollapsedMenuElement;
     };
     interface HTMLDropdownListElement extends Components.DropdownList, HTMLStencilElement {
     }
@@ -225,9 +215,8 @@ declare global {
         new (): HTMLUpuiInputElement;
     };
     interface HTMLElementTagNameMap {
-        "collapsed-menu": HTMLCollapsedMenuElement;
-        "dropdown-list": HTMLDropdownListElement;
         "checkbox-input": HTMLCheckboxInputElement;
+        "collapsed-menu": HTMLCollapsedMenuElement;
         "dropdown-list": HTMLDropdownListElement;
         "gray-outlined-btn": HTMLGrayOutlinedBtnElement;
         "main-btn": HTMLMainBtnElement;
@@ -243,19 +232,15 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface CollapsedMenu {
-        "collapsedisabled"?: boolean;
-        "header"?: string;
-    }
-    interface DropdownList {
-        "dropdowndisabled"?: boolean;
-        "label"?: string;
-    }
     interface CheckboxInput {
         "checkboxdisabled"?: boolean;
         "checkboxvalue"?: string;
         "labelfor"?: string;
         "labeltitle"?: string;
+    }
+    interface CollapsedMenu {
+        "collapsedisabled"?: boolean;
+        "header"?: string;
     }
     interface DropdownList {
         "dropdowndisabled"?: boolean;
@@ -328,9 +313,8 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface IntrinsicElements {
-        "collapsed-menu": CollapsedMenu;
-        "dropdown-list": DropdownList;
         "checkbox-input": CheckboxInput;
+        "collapsed-menu": CollapsedMenu;
         "dropdown-list": DropdownList;
         "gray-outlined-btn": GrayOutlinedBtn;
         "main-btn": MainBtn;
@@ -349,9 +333,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "collapsed-menu": LocalJSX.CollapsedMenu & JSXBase.HTMLAttributes<HTMLCollapsedMenuElement>;
-            "dropdown-list": LocalJSX.DropdownList & JSXBase.HTMLAttributes<HTMLDropdownListElement>;
             "checkbox-input": LocalJSX.CheckboxInput & JSXBase.HTMLAttributes<HTMLCheckboxInputElement>;
+            "collapsed-menu": LocalJSX.CollapsedMenu & JSXBase.HTMLAttributes<HTMLCollapsedMenuElement>;
             "dropdown-list": LocalJSX.DropdownList & JSXBase.HTMLAttributes<HTMLDropdownListElement>;
             "gray-outlined-btn": LocalJSX.GrayOutlinedBtn & JSXBase.HTMLAttributes<HTMLGrayOutlinedBtnElement>;
             "main-btn": LocalJSX.MainBtn & JSXBase.HTMLAttributes<HTMLMainBtnElement>;
