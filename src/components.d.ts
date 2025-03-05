@@ -67,6 +67,8 @@ export namespace Components {
         "plusicon": boolean;
         "text": string;
     }
+    interface UpModal {
+    }
     interface UpuiChip {
         "removable"?: boolean;
         "selected"?: boolean;
@@ -179,6 +181,12 @@ declare global {
         prototype: HTMLSecondaryNoBorderBtnElement;
         new (): HTMLSecondaryNoBorderBtnElement;
     };
+    interface HTMLUpModalElement extends Components.UpModal, HTMLStencilElement {
+    }
+    var HTMLUpModalElement: {
+        prototype: HTMLUpModalElement;
+        new (): HTMLUpModalElement;
+    };
     interface HTMLUpuiChipElementEventMap {
         "chipClick": void;
         "chipRemove": void;
@@ -227,6 +235,7 @@ declare global {
         "rcs-actions": HTMLRcsActionsElement;
         "secondary-btn": HTMLSecondaryBtnElement;
         "secondary-no-border-btn": HTMLSecondaryNoBorderBtnElement;
+        "up-modal": HTMLUpModalElement;
         "upui-chip": HTMLUpuiChipElement;
         "upui-input": HTMLUpuiInputElement;
     }
@@ -294,6 +303,8 @@ declare namespace LocalJSX {
         "plusicon"?: boolean;
         "text"?: string;
     }
+    interface UpModal {
+    }
     interface UpuiChip {
         "onChipClick"?: (event: UpuiChipCustomEvent<void>) => void;
         "onChipRemove"?: (event: UpuiChipCustomEvent<void>) => void;
@@ -325,6 +336,7 @@ declare namespace LocalJSX {
         "rcs-actions": RcsActions;
         "secondary-btn": SecondaryBtn;
         "secondary-no-border-btn": SecondaryNoBorderBtn;
+        "up-modal": UpModal;
         "upui-chip": UpuiChip;
         "upui-input": UpuiInput;
     }
@@ -345,6 +357,7 @@ declare module "@stencil/core" {
             "rcs-actions": LocalJSX.RcsActions & JSXBase.HTMLAttributes<HTMLRcsActionsElement>;
             "secondary-btn": LocalJSX.SecondaryBtn & JSXBase.HTMLAttributes<HTMLSecondaryBtnElement>;
             "secondary-no-border-btn": LocalJSX.SecondaryNoBorderBtn & JSXBase.HTMLAttributes<HTMLSecondaryNoBorderBtnElement>;
+            "up-modal": LocalJSX.UpModal & JSXBase.HTMLAttributes<HTMLUpModalElement>;
             "upui-chip": LocalJSX.UpuiChip & JSXBase.HTMLAttributes<HTMLUpuiChipElement>;
             "upui-input": LocalJSX.UpuiInput & JSXBase.HTMLAttributes<HTMLUpuiInputElement>;
         }

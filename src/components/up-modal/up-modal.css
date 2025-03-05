@@ -1,0 +1,88 @@
+:host {
+  display: block;
+}
+
+.upui-modal-container {
+  position: relative;
+  .upui-modal-view {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .upui-modal-content {
+      position: relative;
+      width: 528px;
+      min-width: 528px;
+      height: 345px;
+      min-height: 300px;
+      box-shadow: 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12), 0px 11px 15px -7px rgba(0, 0, 0, 0.2);
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+.upui-modal-title {
+  border-bottom: 2px solid #BFC6CE;
+  .upui-modal-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    h2 {
+      font-family: 'Open Sans', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 32px;
+      color: #252b31;
+      margin: 0;
+    }
+    svg {
+      cursor: pointer;
+    }
+  }
+}
+.upui-modal-body {
+  flex-grow: 1;
+  padding: 24px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  color: #000000;
+}
+.upui-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 4px 8px;
+  border-top: 2px solid #BFC6CE;
+  height: 56px;
+  gap: 8px;
+  button{
+    padding: 8px;
+    height: 36px;
+    border-radius: 4px;
+    border: none;
+    background-color: unset;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    color: #2574DB;
+    cursor: pointer;
+  }
+}
+
+.display-none {
+  display: none;
+}
