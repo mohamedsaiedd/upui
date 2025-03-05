@@ -19,9 +19,6 @@
     p {
       margin: 0;
     }
-    &:focus{
-      border: 2px solid #0C5CC5;
-    }
   }
   .upui-collapse-body {
     overflow: hidden;
