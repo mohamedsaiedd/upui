@@ -30,10 +30,10 @@
   }
   .upui-collapse-disabled{
     cursor: not-allowed ;
+    background-color: #F1F3F3;
+    color: #5E6978;
     &:focus{
       border: 1px solid #6B7786;
-      background-color: #F1F3F3;
-      color: #5E6978;
     }
   }
 }
