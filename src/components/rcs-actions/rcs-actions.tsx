@@ -6,7 +6,6 @@ import { Component, Host, h, Prop,Event, EventEmitter } from '@stencil/core';
   shadow: true,
 })
 export class RcsActions {
-  @Prop() title: string;
   @Prop() description: string;
   @Prop() actions: string;
   @Event() actionClick: EventEmitter<string>; // Custom event

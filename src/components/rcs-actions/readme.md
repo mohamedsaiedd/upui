@@ -11,7 +11,6 @@
 | ------------- | ------------- | ----------- | -------- | ----------- |
 | `actions`     | `actions`     |             | `string` | `undefined` |
 | `description` | `description` |             | `string` | `undefined` |
-| `title`       | `title`       |             | `string` | `undefined` |
 
 
 ## Events

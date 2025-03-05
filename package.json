@@ -1,21 +1,21 @@
 {
   "name": "uplandui",
-  "version": "0.0.4",
-  "description": "Stencil Component Starter",
+  "version": "0.4.7",
+  "description": "uplandui Component library",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/invo/invo.esm.js",
+  "unpkg": "dist/uplandui/uplandui.esm.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/mohamedsaiedd/upui.git"
   },
   "exports": {
     ".": {
-      "import": "./dist/invo/invo.esm.js",
-      "require": "./dist/invo/invo.cjs.js"
+      "import": "./dist/uplandui/uplandui.esm.js",
+      "require": "./dist/uplandui/uplandui.cjs.js"
     },
     "./primary-btn": {
       "import": "./dist/components/primary-btn.js",

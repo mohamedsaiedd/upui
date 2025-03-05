@@ -6,6 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CheckboxInput {
+        "checkboxdisabled": boolean;
+        "checkboxvalue": string;
+        "labelfor": string;
+        "labeltitle": string;
+    }
     interface CollapsedMenu {
         "collapsedisabled": boolean;
         "header": string;
@@ -42,12 +48,12 @@ export namespace Components {
     interface RadioInput {
         "labelfor": string;
         "labeltitle": string;
+        "radioValue": string;
         "radiodisabled": boolean;
     }
     interface RcsActions {
         "actions": string;
         "description": string;
-        "title": string;
     }
     interface SecondaryBtn {
         "btndisabled": boolean;
@@ -61,12 +67,41 @@ export namespace Components {
         "plusicon": boolean;
         "text": string;
     }
+    interface UpuiChip {
+        "removable"?: boolean;
+        "selected"?: boolean;
+        "size"?: 'small' | 'medium' | 'large';
+        "text": string;
+    }
+    interface UpuiInput {
+        "inputId": string;
+        "label": string;
+        "name": string;
+        "placeholder": string;
+        "readonly": boolean;
+        "type": string;
+        "value": string;
+    }
 }
 export interface RcsActionsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLRcsActionsElement;
 }
+export interface UpuiChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUpuiChipElement;
+}
+export interface UpuiInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUpuiInputElement;
+}
 declare global {
+    interface HTMLCheckboxInputElement extends Components.CheckboxInput, HTMLStencilElement {
+    }
+    var HTMLCheckboxInputElement: {
+        prototype: HTMLCheckboxInputElement;
+        new (): HTMLCheckboxInputElement;
+    };
     interface HTMLCollapsedMenuElement extends Components.CollapsedMenu, HTMLStencilElement {
     }
     var HTMLCollapsedMenuElement: {
@@ -144,7 +179,43 @@ declare global {
         prototype: HTMLSecondaryNoBorderBtnElement;
         new (): HTMLSecondaryNoBorderBtnElement;
     };
+    interface HTMLUpuiChipElementEventMap {
+        "chipClick": void;
+        "chipRemove": void;
+    }
+    interface HTMLUpuiChipElement extends Components.UpuiChip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUpuiChipElementEventMap>(type: K, listener: (this: HTMLUpuiChipElement, ev: UpuiChipCustomEvent<HTMLUpuiChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUpuiChipElementEventMap>(type: K, listener: (this: HTMLUpuiChipElement, ev: UpuiChipCustomEvent<HTMLUpuiChipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUpuiChipElement: {
+        prototype: HTMLUpuiChipElement;
+        new (): HTMLUpuiChipElement;
+    };
+    interface HTMLUpuiInputElementEventMap {
+        "valueChanged": string;
+    }
+    interface HTMLUpuiInputElement extends Components.UpuiInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUpuiInputElementEventMap>(type: K, listener: (this: HTMLUpuiInputElement, ev: UpuiInputCustomEvent<HTMLUpuiInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUpuiInputElementEventMap>(type: K, listener: (this: HTMLUpuiInputElement, ev: UpuiInputCustomEvent<HTMLUpuiInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUpuiInputElement: {
+        prototype: HTMLUpuiInputElement;
+        new (): HTMLUpuiInputElement;
+    };
     interface HTMLElementTagNameMap {
+        "checkbox-input": HTMLCheckboxInputElement;
         "collapsed-menu": HTMLCollapsedMenuElement;
         "dropdown-list": HTMLDropdownListElement;
         "gray-outlined-btn": HTMLGrayOutlinedBtnElement;
@@ -156,9 +227,17 @@ declare global {
         "rcs-actions": HTMLRcsActionsElement;
         "secondary-btn": HTMLSecondaryBtnElement;
         "secondary-no-border-btn": HTMLSecondaryNoBorderBtnElement;
+        "upui-chip": HTMLUpuiChipElement;
+        "upui-input": HTMLUpuiInputElement;
     }
 }
 declare namespace LocalJSX {
+    interface CheckboxInput {
+        "checkboxdisabled"?: boolean;
+        "checkboxvalue"?: string;
+        "labelfor"?: string;
+        "labeltitle"?: string;
+    }
     interface CollapsedMenu {
         "collapsedisabled"?: boolean;
         "header"?: string;
@@ -195,13 +274,13 @@ declare namespace LocalJSX {
     interface RadioInput {
         "labelfor"?: string;
         "labeltitle"?: string;
+        "radioValue"?: string;
         "radiodisabled"?: boolean;
     }
     interface RcsActions {
         "actions"?: string;
         "description"?: string;
         "onActionClick"?: (event: RcsActionsCustomEvent<string>) => void;
-        "title"?: string;
     }
     interface SecondaryBtn {
         "btndisabled"?: boolean;
@@ -215,7 +294,26 @@ declare namespace LocalJSX {
         "plusicon"?: boolean;
         "text"?: string;
     }
+    interface UpuiChip {
+        "onChipClick"?: (event: UpuiChipCustomEvent<void>) => void;
+        "onChipRemove"?: (event: UpuiChipCustomEvent<void>) => void;
+        "removable"?: boolean;
+        "selected"?: boolean;
+        "size"?: 'small' | 'medium' | 'large';
+        "text": string;
+    }
+    interface UpuiInput {
+        "inputId"?: string;
+        "label"?: string;
+        "name"?: string;
+        "onValueChanged"?: (event: UpuiInputCustomEvent<string>) => void;
+        "placeholder"?: string;
+        "readonly"?: boolean;
+        "type"?: string;
+        "value"?: string;
+    }
     interface IntrinsicElements {
+        "checkbox-input": CheckboxInput;
         "collapsed-menu": CollapsedMenu;
         "dropdown-list": DropdownList;
         "gray-outlined-btn": GrayOutlinedBtn;
@@ -227,12 +325,15 @@ declare namespace LocalJSX {
         "rcs-actions": RcsActions;
         "secondary-btn": SecondaryBtn;
         "secondary-no-border-btn": SecondaryNoBorderBtn;
+        "upui-chip": UpuiChip;
+        "upui-input": UpuiInput;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "checkbox-input": LocalJSX.CheckboxInput & JSXBase.HTMLAttributes<HTMLCheckboxInputElement>;
             "collapsed-menu": LocalJSX.CollapsedMenu & JSXBase.HTMLAttributes<HTMLCollapsedMenuElement>;
             "dropdown-list": LocalJSX.DropdownList & JSXBase.HTMLAttributes<HTMLDropdownListElement>;
             "gray-outlined-btn": LocalJSX.GrayOutlinedBtn & JSXBase.HTMLAttributes<HTMLGrayOutlinedBtnElement>;
@@ -244,6 +345,8 @@ declare module "@stencil/core" {
             "rcs-actions": LocalJSX.RcsActions & JSXBase.HTMLAttributes<HTMLRcsActionsElement>;
             "secondary-btn": LocalJSX.SecondaryBtn & JSXBase.HTMLAttributes<HTMLSecondaryBtnElement>;
             "secondary-no-border-btn": LocalJSX.SecondaryNoBorderBtn & JSXBase.HTMLAttributes<HTMLSecondaryNoBorderBtnElement>;
+            "upui-chip": LocalJSX.UpuiChip & JSXBase.HTMLAttributes<HTMLUpuiChipElement>;
+            "upui-input": LocalJSX.UpuiInput & JSXBase.HTMLAttributes<HTMLUpuiInputElement>;
         }
     }
 }
